@@ -1,0 +1,23 @@
+{
+  "suites": [
+    "test/index.html"
+  ],
+  "environmentImports": [
+    "test-fixture/test-fixture.html"
+  ],
+  "plugins": {
+    "local": {
+      "browserOptions": {
+        "chrome": [
+          "window-size=1920,1080",
+          "headless",
+          "disable-gpu",
+          "no-sandbox"
+        ],
+        "firefox": [
+          "-headless"
+        ]
+      }
+    }
+  }
+}
