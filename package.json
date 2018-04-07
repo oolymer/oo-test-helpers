@@ -24,6 +24,7 @@
     "dev": "./node_modules/.bin/npm-run-all --parallel dev:serve dev:serve-watch",
     "dev:serve": "./node_modules/.bin/npm-run-all --serial serve",
     "dev:serve-watch": "./node_modules/.bin/npm-run-all --serial util:delay serve:watch",
+    "install:bower": "./node_modules/.bin/bower install --force-latest",
     "serve": "./node_modules/.bin/polymer serve --port $npm_package_config_portServe",
     "serve:build": "./node_modules/.bin/polymer serve --port $npm_package_config_portServeBuild build/default",
     "serve:watch": "./node_modules/.bin/browser-sync start --port $npm_package_config_portServeWatch --proxy \"localhost:$npm_package_config_portServe\" --no-ui --files '*.js, *.html, demo/**/*.html, src/**/*.html, test/**/*.html' --startPath \"/components/$npm_package_name/\"",
@@ -31,7 +32,7 @@
     "test:headless": "./node_modules/.bin/wct --local chrome --local firefox --configFile 'wct-headless.conf.json'",
     "test:chrome": "./node_modules/.bin/polymer test --local chrome --persistent --skip-selenium-install",
     "test:firefox": "./node_modules/.bin/polymer test --local firefox --persistent --skip-selenium-install",
-    "util:delay": "node ./node_modules/.bin/npm-delay 100"
+    "util:delay": "node ./node_modules/.bin/npm-delay 250"
   },
   "config": {
     "portServe": "8500",
