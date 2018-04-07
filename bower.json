@@ -12,7 +12,8 @@
     }
   ],
   "dependencies": {
-    "polymer": "Polymer/polymer#^2.6.0"
+    "polymer": "Polymer/polymer#^2.6.0",
+    "iron-test-helpers": "PolymerElements/iron-test-helpers#^2.0.0"
   },
   "devDependencies": {
     "font-roboto": "PolymerElements/font-roboto-local#^1.0.0",

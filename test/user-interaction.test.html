@@ -1,0 +1,25 @@
+<script src="../bower_components/webcomponentsjs/webcomponents-loader.js"></script>
+<script src="../bower_components/web-component-tester/browser.js"></script>
+
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../bower_components/iron-test-helpers/iron-test-helpers.html">
+<link rel="import" href="../oo-test-helpers.html">
+
+<test-fixture id="button-fixture">
+  <template>
+    <button id="button">click me</button>
+  </template>
+</test-fixture>
+
+<script>
+  suite("user-interaction", () => {
+    setup(() => {
+      const button = fixture("button-fixture")
+    })
+
+    test("basic test", () => {
+      console.log(button)
+    })
+
+  })
+</script>
