@@ -13,12 +13,21 @@
 
 <script>
   suite("user-interaction", () => {
-    setup(() => {
-      const button = fixture("button-fixture")
-    })
 
-    test("basic test", () => {
-      console.log(button)
+    suite("button", () => {
+      let button
+
+      setup(() => {
+        button = fixture("button-fixture")
+      })
+
+      test("can be clicked", done => {
+        button.addEventListener("click", () => {
+          done()
+        })
+
+        MockInteractions.tap(button)
+      })
     })
 
   })
