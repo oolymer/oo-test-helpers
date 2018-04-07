@@ -27,6 +27,7 @@ A set of utility classes and best practices for [Polymer 2.x](https://github.com
 
 - Uses Mocha's TDD-style interface (`suite`, `test`, `setup`, `suiteSetup`, `teardown`, `suiteTeardown`): https://mochajs.org/#tdd
 - Uses Chai's BDD-style `expect` interface (`expect(foo).to.equal("bar")`): http://www.chaijs.com/guide/styles/#expect
+- Uses Sinon's test spies, stubs and mocks (`sinon.spy()`, `sinon.stub()`, `sinon.mock`): http://sinonjs.org/releases/v4.5.0/spy-call/
 
 ### :question: How to test custom elements reasonably?
 

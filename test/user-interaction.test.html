@@ -1,13 +1,33 @@
 <script src="../bower_components/webcomponentsjs/webcomponents-loader.js"></script>
 <script src="../bower_components/web-component-tester/browser.js"></script>
 
-<link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../bower_components/iron-icons/iron-icons.html">
+<link rel="import" href="../bower_components/paper-item/paper-item.html">
+<link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../bower_components/paper-listbox/paper-listbox.html">
 <link rel="import" href="../bower_components/iron-test-helpers/iron-test-helpers.html">
 <link rel="import" href="../oo-test-helpers.html">
 
 <test-fixture id="button-fixture">
   <template>
-    <button id="button">click me</button>
+    <paper-button raised id="button">click me</paper-button>
+  </template>
+</test-fixture>
+
+<test-fixture id="items-fixture">
+  <template>
+    <paper-listbox>
+      <paper-item class="item-1">
+        <span>first option</span>
+        <paper-icon-button icon="close"></paper-icon-button>
+      </paper-item>
+
+      <paper-item class="item-2">
+        <span>second option</span>
+        <paper-icon-button icon="close"></paper-icon-button>
+      </paper-item>
+    </paper-listbox>
   </template>
 </test-fixture>
 
@@ -27,6 +47,78 @@
         })
 
         MockInteractions.tap(button)
+      })
+
+      test("can be pushed with key", done => {
+        button.addEventListener("keydown", () => {
+          done()
+        })
+
+        MockInteractions.pressEnter(button)
+      })
+
+      test("can be hovered", () => {
+        const eventSpy = sinon.spy()
+        button.addEventListener("mouseover", eventSpy)
+
+        // when:
+        MockInteractions.mouseover(button)
+
+        // then:
+        expect(eventSpy.args).to.have.length(1)
+      })
+
+      // test.skip("can be ...", () => {
+      //   MockInteractions.focus(button)
+      //   MockInteractions.blur(button)
+      //   MockInteractions.move(
+      //     button,
+      //     { x: 0, y: 0 },
+      //     MockInteractions.middleOfNode(button)
+      //   )
+      // })
+    })
+
+    suite("items", () => {
+      let items
+
+      setup(() => {
+        // given:
+        items = fixture("items-fixture")
+      })
+
+      test("first option can be selected", done => {
+        const item1 = items.querySelector(".item-1")
+        const item2 = items.querySelector(".item-2")
+
+        // when:
+        MockInteractions.downAndUp(item1)
+        MockInteractions.focus(item1)
+
+        // then:
+        flush(() => {
+          expect(items.selected).to.eql(0)
+          expect(item1.focused).to.be.true
+          expect(item2.focused).to.be.false
+          done()
+        })
+      })
+
+      test("second option can be selected", done => {
+        const item1 = items.querySelector(".item-1")
+        const item2 = items.querySelector(".item-2")
+
+        // when:
+        MockInteractions.downAndUp(item2)
+        MockInteractions.focus(item2)
+
+        // then:
+        flush(() => {
+          expect(items.selected).to.eql(1)
+          expect(item1.focused).to.be.false
+          expect(item2.focused).to.be.true
+          done()
+        })
       })
     })
 
