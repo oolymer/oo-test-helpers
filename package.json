@@ -21,8 +21,7 @@
     "build": "./node_modules/.bin/npm-run-all --serial build:polymer build:polymer:docs",
     "build:polymer": "./node_modules/.bin/polymer build",
     "build:polymer:docs": "./node_modules/.bin/polymer analyze > analysis.json",
-    "dev": "./node_modules/.bin/npm-run-all --parallel dev:serve dev:serve-watch",
-    "dev:serve": "./node_modules/.bin/npm-run-all --serial serve",
+    "dev": "./node_modules/.bin/npm-run-all --parallel serve dev:serve-watch",
     "dev:serve-watch": "./node_modules/.bin/npm-run-all --serial util:delay serve:watch",
     "install:bower": "./node_modules/.bin/bower install --force-latest",
     "serve": "./node_modules/.bin/polymer serve --port $npm_package_config_portServe",
@@ -32,7 +31,7 @@
     "test:headless": "./node_modules/.bin/wct --local chrome --local firefox --configFile 'wct-headless.conf.json'",
     "test:chrome": "./node_modules/.bin/polymer test --local chrome --persistent --skip-selenium-install",
     "test:firefox": "./node_modules/.bin/polymer test --local firefox --persistent --skip-selenium-install",
-    "util:delay": "node ./node_modules/.bin/npm-delay 250"
+    "util:delay": "node ./node_modules/.bin/npm-delay 100"
   },
   "config": {
     "portServe": "8500",
