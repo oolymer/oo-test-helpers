@@ -25,6 +25,9 @@ A set of utility classes and best practices for [Polymer 2.x](https://github.com
 
 *To be done.*
 
+- Uses Mocha's TDD-style interface (`suite`, `test`, `setup`, `suiteSetup`, `teardown`, `suiteTeardown`): https://mochajs.org/#tdd
+- Uses Chai's BDD-style `expect` interface (`expect(foo).to.equal("bar")`): http://www.chaijs.com/guide/styles/#expect
+
 ### :question: How to test custom elements reasonably?
 
 *To be done.*
@@ -35,7 +38,7 @@ A set of utility classes and best practices for [Polymer 2.x](https://github.com
 
 > File: `package.json` (excerpt)
 ~~~json
-"test:polymer:headless": "./node_modules/.bin/wct --local chrome --local firefox --configFile 'wct-headless.conf.json'",
+"test:headless": "./node_modules/.bin/wct --local chrome --local firefox --configFile 'wct-headless.conf.json'",
 ~~~
 
 > File: `wct-headless.conf.json`
@@ -86,6 +89,10 @@ References:
 "test:polymer": "./node_modules/.bin/polymer test --local chrome --local firefox --persistent --skip-selenium-install",
 ~~~
 
+> Browsersync works by injecting an asynchronous script tag (`<script async>...</script>`) right after the `<body>` tag during initial request. In order for this to work properly the `<body>` tag must be present.
+
+- https://github.com/BrowserSync/browser-sync#requirements
+
 ### :question: How to setup and cleanup test fixtures (serialized objects from json files)?
 
 *To be done.*
@@ -108,6 +115,42 @@ You can define your test fixtures within a `<template>` using https://github.com
 ### :question: How to pause on setup or on cleanup to see and interact with test fixtures (custom components) manually?
 
 *To be done.*
+
+~~~js
+function setupBlocked(block) {
+  setup(function(done) {
+    this.enableTimeouts(false)
+    block(done)
+  })
+}
+
+suite("button", () => {
+  setupBlocked(() => {
+    const button = fixture("button-fixture")
+  })
+})
+~~~
+
+~~~js
+const tddMocha = Mocha.interfaces.tdd
+Mocha.interfaces.tdd = function tdd(suite) {
+  tddMocha(suite)
+  suite.on("pre-require", (context, file, mocha) => {
+    context.setup.blocked = function blocked(block) {
+      context.setup(function(done) {
+        this.enableTimeouts(false)
+        block(done)
+      })
+    }
+  })
+}
+
+suite("button", () => {
+  setup.blocked(() => {
+    const button = fixture("button-fixture")
+  })
+})
+~~~
 
 ### :question: How to simulate user interactions on test fixtures (custom components)?
 
