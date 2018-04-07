@@ -65,6 +65,7 @@
         MockInteractions.mouseover(button)
 
         // then:
+        expect(eventSpy.callCount).to.eql(1)
         expect(eventSpy.args).to.have.length(1)
       })
 
@@ -92,8 +93,10 @@
         const item2 = items.querySelector(".item-2")
 
         // when:
-        MockInteractions.downAndUp(item1)
         MockInteractions.focus(item1)
+        Polymer.Base.async(() => {
+          MockInteractions.click(item1)
+        })
 
         // then:
         flush(() => {
@@ -109,8 +112,8 @@
         const item2 = items.querySelector(".item-2")
 
         // when:
-        MockInteractions.downAndUp(item2)
         MockInteractions.focus(item2)
+        MockInteractions.downAndUp(item2)
 
         // then:
         flush(() => {

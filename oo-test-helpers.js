@@ -106,6 +106,17 @@
   }
 
   /**
+   * Generate a click event on a given node, optionally at a given coordinate.
+   * @param {!Element} node The node to fire the click event on.
+   * @param {{ x: number, y: number }=} xy Optional. The (x,y) coordinates the mouse event should
+   * be fired from.
+   */
+  function click(node, xy) {
+    xy = xy || middleOfNode(node);
+    makeMouseEvent('click', xy, node);
+  }
+
+  /**
    * Fires a `mouseenter` mouse event on a specific node, at a given set of coordinates.
    * This event bubbles and is cancellable. If the (x,y) coordinates are
    * not specified, the middle of the node will be used instead.
@@ -144,6 +155,7 @@
     makeMouseEvent('mouseleave', xy, node);
   }
 
+  MockInteractions.click = click;
   MockInteractions.mouseenter = mouseenter;
   MockInteractions.mouseleave = mouseleave;
   MockInteractions.mouseover = mouseover;
