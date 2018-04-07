@@ -1,6 +1,6 @@
 <link rel="import" href="../bower_components/polymer/polymer-element.html">
 
-<dom-module id="my-element">
+<dom-module id="simple-element">
   <template>
     <style>
       :host {
@@ -16,9 +16,9 @@
      * @customElement
      * @polymer
      */
-    class MyElement extends Polymer.Element {
+    class SimpleElement extends Polymer.Element {
       static get is() {
-        return "my-element"
+        return "simple-element"
       }
 
       static get properties() {
@@ -41,6 +41,6 @@
       }
     }
 
-    window.customElements.define(MyElement.is, MyElement)
+    window.customElements.define(SimpleElement.is, SimpleElement)
   </script>
 </dom-module>
