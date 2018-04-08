@@ -45,6 +45,21 @@
     }
   })
 
+  extendMochaInterfaces((context, interfaceName) => {
+    if (interfaceName === "tdd") {
+      context.setup.data = function data(path, callback) {
+        context.setup(function(done) {
+          window.fetch(path)
+            .then(response => response.json())
+            .then(data => {
+              callback(data)
+              done()
+            }, done)
+        })
+      }
+    }
+  })
+
   applyMochaExtensions()
 })(this)
 

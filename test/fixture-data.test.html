@@ -1,0 +1,35 @@
+<script src="../bower_components/webcomponentsjs/webcomponents-loader.js"></script>
+<script src="../bower_components/web-component-tester/browser.js"></script>
+
+<link rel="import" href="../bower_components/iron-test-helpers/iron-test-helpers.html">
+<link rel="import" href="../oo-test-helpers.html">
+
+<script>
+  suite("fixture-data", () => {
+
+    suite("json fixture", () => {
+      let fixture
+
+      setup.data("fixture-data.json", data => {
+        fixture = data
+      })
+
+      test("can be loaded", () => {
+        expect(fixture).to.eql({ foo: 42 })
+      })
+    })
+
+    // suite("missing json fixture", () => {
+    //   let fixture
+
+    //   setup.data("missing-data.json", data => {
+    //     fixture = data
+    //   })
+
+    //   test("can not be loaded", () => {
+    //     expect(fixture).to.be.undefined
+    //   })
+    // })
+
+  })
+</script>
