@@ -69,6 +69,12 @@ A set of utility classes and best practices for [Polymer 2.x](https://github.com
 }
 ~~~
 
+WCT Runner Config:
+- https://github.com/Polymer/web-component-tester/blob/master/runner/config.ts
+
+WCT Plugin Options:
+- https://github.com/Polymer/wct-local/blob/master/src/plugin.ts
+
 References:
 > Headless Chrome is shipping in Chrome 59 (June 5, 2017).
 - https://developers.google.com/web/updates/2017/04/headless-chrome
