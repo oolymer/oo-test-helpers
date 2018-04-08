@@ -11,7 +11,7 @@
 
 <test-fixture id="button-fixture">
   <template>
-    <paper-button raised id="button">click me</paper-button>
+    <paper-button raised>click me</paper-button>
   </template>
 </test-fixture>
 
@@ -30,6 +30,21 @@
     </paper-listbox>
   </template>
 </test-fixture>
+
+<style>
+  paper-item paper-icon-button {
+    opacity: 0.0;
+    transition: 0.2s ease-out;
+  }
+
+  paper-item:hover paper-icon-button {
+    opacity: 0.5;
+  }
+
+  paper-item:hover paper-icon-button:hover {
+    opacity: 1.0;
+  }
+</style>
 
 <script>
   suite("user-interaction", () => {
@@ -93,9 +108,9 @@
         const item2 = items.querySelector(".item-2")
 
         // when:
-        MockInteractions.focus(item1)
         Polymer.Base.async(() => {
           MockInteractions.click(item1)
+          MockInteractions.focus(item1)
         })
 
         // then:
@@ -112,8 +127,8 @@
         const item2 = items.querySelector(".item-2")
 
         // when:
-        MockInteractions.focus(item2)
         MockInteractions.downAndUp(item2)
+        MockInteractions.focus(item2)
 
         // then:
         flush(() => {
