@@ -40,7 +40,7 @@ It uses several libraries which are included in `web-component-tester`:
 
 - Uses Sinon's (a mocking library) test spies, stubs and mocks (`sinon.spy()`, `sinon.stub()`, `sinon.mock()`): http://sinonjs.org/releases/v4.5.0/spy-call/
 
-![test-simple-element.png](doc/test-simple-element.png)
+![test-basic-element.png](doc/test-basic-element.png)
 
 ### :question: How to test custom elements reasonably?
 
