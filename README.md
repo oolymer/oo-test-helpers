@@ -7,7 +7,7 @@ A set of utility classes and best practices for [Polymer 2.x](https://github.com
 <!-- TOC depthFrom:2 -->
 
 - [Questions and Answers](#questions-and-answers)
-    - [:question: How to write a basic test for a custom element?](#question-how-to-write-a-basic-test-for-a-custom-element)
+    - [:question: How to write and run a basic test for a custom element?](#question-how-to-write-and-run-a-basic-test-for-a-custom-element)
     - [:question: How to test custom elements reasonably?](#question-how-to-test-custom-elements-reasonably)
     - [:question: How run tests in a headless browser environment on a CI machine (continuous integration)?](#question-how-run-tests-in-a-headless-browser-environment-on-a-ci-machine-continuous-integration)
     - [:question: How run tests in a development environment on a local machine?](#question-how-run-tests-in-a-development-environment-on-a-local-machine)
@@ -21,15 +21,21 @@ A set of utility classes and best practices for [Polymer 2.x](https://github.com
 
 ## Questions and Answers
 
-### :question: How to write a basic test for a custom element?
+### :question: How to write and run a basic test for a custom element?
 
-Demo: [simple-element.test.html](test/simple-element.test.html):
+Demo: :page_facing_up: [simple-element.test.html](test/simple-element.test.html).
 
-*To be done.*
+It uses several libraries which are included in `web-component-tester`:
 
-- Uses Mocha's TDD-style interface (`suite`, `test`, `setup`, `suiteSetup`, `teardown`, `suiteTeardown`): https://mochajs.org/#tdd
-- Uses Chai's BDD-style `expect` interface (`expect(foo).to.equal("bar")`): http://www.chaijs.com/guide/styles/#expect
-- Uses Sinon's test spies, stubs and mocks (`sinon.spy()`, `sinon.stub()`, `sinon.mock`): http://sinonjs.org/releases/v4.5.0/spy-call/
+- Polymer's `<test-fixture>` (a custom element) to define test fixtures within a `<template>`: https://github.com/PolymerElements/test-fixture
+
+- Mocha's (a test framework) TDD-style interface (`suite`, `test`, `setup`, `suiteSetup`, `teardown`, `suiteTeardown`): https://mochajs.org/#tdd
+
+- Chai's (an assertion library) BDD-style `expect` interface (`expect(foo).to.equal("bar")`): http://www.chaijs.com/guide/styles/#expect
+
+- Uses Sinon's (a mocking library) test spies, stubs and mocks (`sinon.spy()`, `sinon.stub()`, `sinon.mock()`): http://sinonjs.org/releases/v4.5.0/spy-call/
+
+![test-simple-element.png](doc/test-simple-element.png)
 
 ### :question: How to test custom elements reasonably?
 
