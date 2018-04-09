@@ -1,6 +1,6 @@
 {
   "name": "oo-test-helpers",
-  "description": "",
+  "description": "A set of utility classes and best practices for Polymer 2.x to make testing easier.",
   "version": "0.1.0",
   "authors": [
     "Benjamin Gudehus <benjamin.gudehus@canoo.com>"
