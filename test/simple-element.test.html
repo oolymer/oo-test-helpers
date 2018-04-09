@@ -1,0 +1,38 @@
+<script src="../bower_components/webcomponentsjs/webcomponents-loader.js"></script>
+<script src="../bower_components/web-component-tester/browser.js"></script>
+
+<link rel="import" href="./simple-element.html">
+
+<test-fixture id="BasicTestFixture">
+  <template>
+    <simple-element></simple-element>
+  </template>
+</test-fixture>
+
+<test-fixture id="ChangedPropertyTestFixture">
+  <template>
+    <simple-element title="fixture"></simple-element>
+  </template>
+</test-fixture>
+
+<script>
+  suite("simple-element", () => {
+
+    test("instantiate the element with default properties", () => {
+      const element = fixture("BasicTestFixture")
+      expect(element.title).to.equal("simple-element")
+
+      const elementHeader = element.shadowRoot.querySelector("h2")
+      expect(elementHeader.innerHTML).to.equal("Hello simple-element!")
+    })
+
+    test("set a property on the element", () => {
+      const element = fixture("ChangedPropertyTestFixture")
+      expect(element.title).to.equal("fixture")
+
+      const elementHeader = element.shadowRoot.querySelector("h2")
+      expect(elementHeader.innerHTML).to.equal("Hello fixture!")
+    })
+
+  })
+</script>

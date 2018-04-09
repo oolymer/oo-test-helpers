@@ -1,0 +1,46 @@
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+
+<dom-module id="simple-element">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
+
+    <h2>Hello [[title]]!</h2>
+  </template>
+
+  <script>
+    /**
+     * @customElement
+     * @polymer
+     */
+    class SimpleElement extends Polymer.Element {
+      static get is() {
+        return "simple-element"
+      }
+
+      static get properties() {
+        return {
+          title: {
+            type: String,
+            value: () => this.is,
+            reflectToAttribute: true
+          }
+        }
+      }
+
+      ready() {
+        super.ready()
+        this._log("ready")
+      }
+
+      _log(...messages) {
+        console.log(`[${this.localName}]`, ...messages)
+      }
+    }
+
+    window.customElements.define(SimpleElement.is, SimpleElement)
+  </script>
+</dom-module>

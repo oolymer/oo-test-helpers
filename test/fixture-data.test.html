@@ -1,0 +1,63 @@
+<script src="../bower_components/webcomponentsjs/webcomponents-loader.js"></script>
+<script src="../bower_components/web-component-tester/browser.js"></script>
+<script src="../mocha-extensions.js"></script>
+
+<link rel="import" href="../bower_components/polymer/lib/elements/dom-bind.html">
+<link rel="import" href="../bower_components/iron-test-helpers/iron-test-helpers.html">
+<link rel="import" href="../oo-test-helpers.html">
+
+<test-fixture id="container-fixture">
+  <template>
+    <div>
+      <dom-bind>
+        <template>
+          <span>foo: [[foo]]</span>
+        </template>
+      </dom-bind>
+    </div>
+  </template>
+</test-fixture>
+
+<script>
+  suite("fixture-data", () => {
+
+    suite("json fixture", () => {
+      let data
+
+      setup.data("fixture-data.json", _data => {
+        data = _data
+      })
+
+      test("can be loaded", () => {
+        // expect:
+        expect(data).to.eql({ foo: 42 })
+      })
+
+      test("can be loaded as component properties", () => {
+        const container = fixture("container-fixture")
+        const component = container.querySelector("dom-bind")
+
+        // when:
+        component.setProperties(data)
+
+        // then:
+        expect(container.textContent.trim()).to.eql("foo: 42")
+        expect(component.foo).to.eql(42)
+      })
+    })
+
+    // suite("missing json fixture", () => {
+    //   let fixture
+
+    //   setup.data("missing-data.json", data => {
+    //     fixture = data
+    //   })
+
+    //   test("can not be loaded", () => {
+    //     // expect:
+    //     expect(fixture).to.be.undefined
+    //   })
+    // })
+
+  })
+</script>
