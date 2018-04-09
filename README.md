@@ -23,6 +23,8 @@ A set of utility classes and best practices for [Polymer 2.x](https://github.com
 
 ### :question: How to write a basic test for a custom element?
 
+Demo: [simple-element.test.html](test/simple-element.test.html):
+
 *To be done.*
 
 - Uses Mocha's TDD-style interface (`suite`, `test`, `setup`, `suiteSetup`, `teardown`, `suiteTeardown`): https://mochajs.org/#tdd
