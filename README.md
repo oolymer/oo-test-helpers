@@ -11,8 +11,8 @@ A set of utility classes and best practices for [Polymer 2.x](https://github.com
     - [:question: How to test custom elements reasonably?](#question-how-to-test-custom-elements-reasonably)
     - [:question: How run tests in a headless browser environment on a CI machine (continuous integration)?](#question-how-run-tests-in-a-headless-browser-environment-on-a-ci-machine-continuous-integration)
     - [:question: How run tests in a development environment on a local machine?](#question-how-run-tests-in-a-development-environment-on-a-local-machine)
-    - [:question: How to setup and cleanup test fixtures (serialized objects from json files)?](#question-how-to-setup-and-cleanup-test-fixtures-serialized-objects-from-json-files)
     - [:question: How to setup and cleanup test fixtures (custom components)?](#question-how-to-setup-and-cleanup-test-fixtures-custom-components)
+    - [:question: How to setup and cleanup test fixtures (serialized objects from json files)?](#question-how-to-setup-and-cleanup-test-fixtures-serialized-objects-from-json-files)
     - [:question: How to pause on setup or on cleanup to see and interact with test fixtures (custom components) manually?](#question-how-to-pause-on-setup-or-on-cleanup-to-see-and-interact-with-test-fixtures-custom-components-manually)
     - [:question: How to simulate user interactions on test fixtures (custom components)?](#question-how-to-simulate-user-interactions-on-test-fixtures-custom-components)
     - [:question: How to use stub elements (custom components)?](#question-how-to-use-stub-elements-custom-components)
@@ -43,11 +43,13 @@ It uses several libraries which are included in `web-component-tester`:
 
 ### :question: How run tests in a headless browser environment on a CI machine (continuous integration)?
 
+Demo: :page_facing_up: [package.json](package.json), [wct-headless.conf.json](wct-headless.conf.json), [.travis.yml](.travis.yml).
+
 *To be done.*
 
 > File: `package.json` (excerpt)
 ~~~json
-"test:headless": "./node_modules/.bin/wct --local chrome --local firefox --configFile 'wct-headless.conf.json'",
+"test:headless": "./node_modules/.bin/wct --expanded --local chrome --local firefox --configFile 'wct-headless.conf.json'",
 ~~~
 
 > File: `wct-headless.conf.json`
@@ -92,23 +94,37 @@ References:
 
 ### :question: How run tests in a development environment on a local machine?
 
+Demo: :page_facing_up: [package.json](package.json).
+
 *To be done.*
 
 > File: `package.json` (excerpt)
 ~~~json
-"serve": "./node_modules/.bin/polymer serve --port 9000",
+"serve": "./node_modules/.bin/polymer serve --port $npm_package_config_portServe",
+"serve:watch": "./node_modules/.bin/browser-sync start --port $npm_package_config_portServeWatch --proxy \"localhost:$npm_package_config_portServe\" --no-ui --files '*.js, *.html, demo/**/*.html, src/**/*.html, test/**/*.html' --startPath \"/components/$npm_package_name/\"",
 ~~~
 
 > File: `package.json` (excerpt)
 ~~~json
-"test:polymer": "./node_modules/.bin/polymer test --local chrome --local firefox --persistent --skip-selenium-install",
+"test:chrome": "./node_modules/.bin/polymer test --local chrome --persistent --skip-selenium-install",
+"test:firefox": "./node_modules/.bin/polymer test --local firefox --persistent --skip-selenium-install",
 ~~~
 
 > Browsersync works by injecting an asynchronous script tag (`<script async>...</script>`) right after the `<body>` tag during initial request. In order for this to work properly the `<body>` tag must be present.
 
 - https://github.com/BrowserSync/browser-sync#requirements
 
+### :question: How to setup and cleanup test fixtures (custom components)?
+
+Demo: :page_facing_up: [simple-element.test.html](test/simple-element.test.html).
+
+You can define your test fixtures within a `<template>` using https://github.com/PolymerElements/test-fixture (which is included in `web-component-tester`).
+
+`<test-fixture>` is used to prevent shared state, i.e. it will copy a clean, new instance of template content into each test suite (see: https://www.polymer-project.org/2.0/docs/tools/tests#test-fixtures).
+
 ### :question: How to setup and cleanup test fixtures (serialized objects from json files)?
+
+Demo: :page_facing_up: [fixture-data.test.html](test/fixture-data.test.html).
 
 *To be done.*
 
@@ -121,13 +137,9 @@ window.fetch("./fixtures/properties-for-custom-element.json")
 References:
 - https://github.com/github/fetch
 
-### :question: How to setup and cleanup test fixtures (custom components)?
-
-You can define your test fixtures within a `<template>` using https://github.com/PolymerElements/test-fixture (which is included in `web-component-tester`).
-
-`<test-fixture>` is used to prevent shared state, i.e. it will copy a clean, new instance of template content into each test suite (see: https://www.polymer-project.org/2.0/docs/tools/tests#test-fixtures).
-
 ### :question: How to pause on setup or on cleanup to see and interact with test fixtures (custom components) manually?
+
+Demo: :page_facing_up: [mocha-extensions.js](mocha-extensions.js).
 
 *To be done.*
 
@@ -168,6 +180,8 @@ suite("button", () => {
 ~~~
 
 ### :question: How to simulate user interactions on test fixtures (custom components)?
+
+Demo: :page_facing_up: [user-interaction.test.html](test/user-interaction.test.html).
 
 You can import `iron-test-helpers.html` from https://github.com/PolymerElements/iron-test-helpers and use the methods provides in `global.MockInteractions` within your test suites.
 
