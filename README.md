@@ -11,22 +11,64 @@
 
 <!-- TOC depthFrom:2 -->
 
+- [Usage](#usage)
+- [Reference](#reference)
 - [Questions and Answers](#questions-and-answers)
-    - [:question: How to write and run a basic test for a custom element?](#question-how-to-write-and-run-a-basic-test-for-a-custom-element)
-    - [:question: How to test custom elements reasonably?](#question-how-to-test-custom-elements-reasonably)
-    - [:question: How run tests in a headless browser environment on a CI machine (continuous integration)?](#question-how-run-tests-in-a-headless-browser-environment-on-a-ci-machine-continuous-integration)
-    - [:question: How run tests in a development environment on a local machine?](#question-how-run-tests-in-a-development-environment-on-a-local-machine)
-    - [:question: How to setup and cleanup test fixtures (custom components)?](#question-how-to-setup-and-cleanup-test-fixtures-custom-components)
-    - [:question: How to setup and cleanup test fixtures (serialized objects from json files)?](#question-how-to-setup-and-cleanup-test-fixtures-serialized-objects-from-json-files)
-    - [:question: How to pause on setup or on cleanup to see and interact with test fixtures (custom components) manually?](#question-how-to-pause-on-setup-or-on-cleanup-to-see-and-interact-with-test-fixtures-custom-components-manually)
-    - [:question: How to simulate user interactions on test fixtures (custom components)?](#question-how-to-simulate-user-interactions-on-test-fixtures-custom-components)
-    - [:question: How to use stub elements (custom components)?](#question-how-to-use-stub-elements-custom-components)
 
 <!-- /TOC -->
 
+## Usage
+
+~~~json
+{
+  "dependencies": {
+    "oo-test-helpers": "oolymer/oo-test-helpers#0.1.0"
+  }
+}
+~~~
+
+~~~html
+<script src="../../webcomponentsjs/webcomponents-loader.js"></script>
+<script src="../../web-component-tester/browser.js"></script>
+<script src="../../oo-test-helpers/mocha-extensions.js"></script>
+
+<link rel="import" href="../../iron-test-helpers/iron-test-helpers.html">
+<link rel="import" href="../../oo-test-helpers/oo-test-helpers.html">
+~~~
+
+## Reference
+
+`setup.data()`
+
+*To be done.*
+
+`setup.wait()`
+
+*To be done.*
+
+`test.wait()`
+
+*To be done.*
+
+`MockInteractions.click()`
+
+*To be done.*
+
+`MockInteractions.mouseenter()`
+
+*To be done.*
+
+`MockInteractions.mouseleave()`
+
+*To be done.*
+
+`MockInteractions.mouseover()`
+
+*To be done.*
+
 ## Questions and Answers
 
-### :question: How to write and run a basic test for a custom element?
+> :question: How to write and run a basic test for a custom element?
 
 Demo: :page_facing_up: [simple-element.test.html](test/simple-element.test.html).
 
@@ -42,11 +84,11 @@ It uses several libraries which are included in `web-component-tester`:
 
 ![test-basic-element.png](doc/test-basic-element.png)
 
-### :question: How to test custom elements reasonably?
+> :question: How to test custom elements reasonably?
 
 *To be done.*
 
-### :question: How run tests in a headless browser environment on a CI machine (continuous integration)?
+> :question: How run tests in a headless browser environment on a CI machine (continuous integration)?
 
 Demo: :page_facing_up: [package.json](package.json), [wct-headless.conf.json](wct-headless.conf.json), [.travis.yml](.travis.yml).
 
@@ -97,7 +139,7 @@ References:
 > Headless Firefox works on Fx55+ (August 8, 2017) on Linux, and 56+ (September 28, 2017) on Windows/Mac.
 - https://developer.mozilla.org/en-US/Firefox/Headless_mode
 
-### :question: How run tests in a development environment on a local machine?
+> :question: How run tests in a development environment on a local machine?
 
 Demo: :page_facing_up: [package.json](package.json).
 
@@ -119,7 +161,7 @@ Demo: :page_facing_up: [package.json](package.json).
 
 - https://github.com/BrowserSync/browser-sync#requirements
 
-### :question: How to setup and cleanup test fixtures (custom components)?
+> :question: How to setup and cleanup test fixtures (custom components)?
 
 Demo: :page_facing_up: [simple-element.test.html](test/simple-element.test.html).
 
@@ -127,7 +169,7 @@ You can define your test fixtures within a `<template>` using https://github.com
 
 `<test-fixture>` is used to prevent shared state, i.e. it will copy a clean, new instance of template content into each test suite (see: https://www.polymer-project.org/2.0/docs/tools/tests#test-fixtures).
 
-### :question: How to setup and cleanup test fixtures (serialized objects from json files)?
+> :question: How to setup and cleanup test fixtures (serialized objects from json files)?
 
 Demo: :page_facing_up: [fixture-data.test.html](test/fixture-data.test.html).
 
@@ -142,7 +184,7 @@ window.fetch("./fixtures/properties-for-custom-element.json")
 References:
 - https://github.com/github/fetch
 
-### :question: How to pause on setup or on cleanup to see and interact with test fixtures (custom components) manually?
+> :question: How to pause on setup or on cleanup to see and interact with test fixtures (custom components) manually?
 
 Demo: :page_facing_up: [mocha-extensions.js](mocha-extensions.js).
 
@@ -184,13 +226,13 @@ suite("button", () => {
 })
 ~~~
 
-### :question: How to simulate user interactions on test fixtures (custom components)?
+> :question: How to simulate user interactions on test fixtures (custom components)?
 
 Demo: :page_facing_up: [user-interaction.test.html](test/user-interaction.test.html).
 
 You can import `iron-test-helpers.html` from https://github.com/PolymerElements/iron-test-helpers and use the methods provides in `global.MockInteractions` within your test suites.
 
-### :question: How to use stub elements (custom components)?
+> :question: How to use stub elements (custom components)?
 
 You can replace elements with stub elements to test them in isolation.
 
