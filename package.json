@@ -18,6 +18,8 @@
     "web-component-tester": "6.5.0"
   },
   "scripts": {
+    "start": "npm run dev",
+    "test": "npm run test:headless",
     "build": "./node_modules/.bin/npm-run-all --serial build:polymer build:polymer:docs",
     "build:polymer": "./node_modules/.bin/polymer build",
     "build:polymer:docs": "./node_modules/.bin/polymer analyze > analysis.json",
@@ -27,7 +29,6 @@
     "serve": "./node_modules/.bin/polymer serve --port $npm_package_config_portServe",
     "serve:build": "./node_modules/.bin/polymer serve --port $npm_package_config_portServeBuild build/default",
     "serve:watch": "./node_modules/.bin/browser-sync start --port $npm_package_config_portServeWatch --proxy \"localhost:$npm_package_config_portServe\" --no-ui --files '*.js, *.html, demo/**/*.html, src/**/*.html, test/**/*.html' --startPath \"/components/$npm_package_name/\"",
-    "test": "./node_modules/.bin/npm-run-all --serial test:headless",
     "test:headless": "./node_modules/.bin/wct --expanded --local chrome --local firefox --configFile 'wct-headless.conf.json'",
     "test:chrome": "./node_modules/.bin/polymer test --local chrome --persistent --skip-selenium-install",
     "test:firefox": "./node_modules/.bin/polymer test --local firefox --persistent --skip-selenium-install",
