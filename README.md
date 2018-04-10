@@ -13,6 +13,7 @@
 
 - [Usage](#usage)
 - [Reference](#reference)
+- [Contributing](#contributing)
 - [Questions and Answers](#questions-and-answers)
 
 <!-- /TOC -->
@@ -69,6 +70,27 @@ Add `browser.js`, `mocha-extensions.js`, `iron-test-helpers.html`, and `oo-test-
 `MockInteractions.mouseover(node)`
 
 *To be done.*
+
+## Contributing
+
+Install `npm` and `bower` dependencies.
+
+~~~
+$ npm install
+$ npm run install:bower
+~~~
+
+Start the development server and open the default browser.
+
+~~~
+$ npm start
+~~~
+
+Run test suites in headless browsers.
+
+~~~
+$ npm test
+~~~
 
 ## Questions and Answers
 
