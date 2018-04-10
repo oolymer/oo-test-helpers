@@ -19,6 +19,8 @@
 
 ## Usage
 
+Add `oo-test-helpers` as dependency to your `bower.json`.
+
 ~~~json
 {
   "dependencies": {
@@ -26,6 +28,8 @@
   }
 }
 ~~~
+
+Add `browser.js`, `mocha-extensions.js`, `iron-test-helpers.html`, and `oo-test-helpers-html` to your `*.test.html`.
 
 ~~~html
 <script src="../../webcomponentsjs/webcomponents-loader.js"></script>
@@ -38,31 +42,31 @@
 
 ## Reference
 
-`setup.data()`
+`setup.data(path, callbackWithData)`
 
 *To be done.*
 
-`setup.wait()`
+`setup.wait(callbackWithDone)`
 
 *To be done.*
 
-`test.wait()`
+`test.wait(name, callbackWithDone)`
 
 *To be done.*
 
-`MockInteractions.click()`
+`MockInteractions.click(node)`
 
 *To be done.*
 
-`MockInteractions.mouseenter()`
+`MockInteractions.mouseenter(node)`
 
 *To be done.*
 
-`MockInteractions.mouseleave()`
+`MockInteractions.mouseleave(node)`
 
 *To be done.*
 
-`MockInteractions.mouseover()`
+`MockInteractions.mouseover(node)`
 
 *To be done.*
 
