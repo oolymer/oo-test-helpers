@@ -25,7 +25,7 @@ Add `oo-test-helpers` as dependency to your `bower.json`.
 ~~~json
 {
   "dependencies": {
-    "oo-test-helpers": "oolymer/oo-test-helpers#0.1.0"
+    "oo-test-helpers": "oolymer/oo-test-helpers#0.2.0"
   }
 }
 ~~~
@@ -90,6 +90,12 @@ Run test suites in headless browsers.
 
 ~~~
 $ npm test
+~~~
+
+Update the change log.
+
+~~~
+$ github_changelog_generator oolymer/oo-test-helpers --simple-list --no-issues --usernames-as-github-logins --output CHANGES.md --future-release v0.2.0
 ~~~
 
 ## Questions and Answers

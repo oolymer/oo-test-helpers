@@ -1,5 +1,11 @@
 # Change Log
 
+## [v0.2.0](https://github.com/oolymer/oo-test-helpers/tree/v0.2.0) (2018-04-10)
+[Full Changelog](https://github.com/oolymer/oo-test-helpers/compare/v0.1.0...v0.2.0)
+
+- \(chore\) npm scripts: Use default start and test as aliases. [\#3](https://github.com/oolymer/oo-test-helpers/pull/3) (@hastebrot)
+- \(doc\) Readme: Add Reference section. [\#2](https://github.com/oolymer/oo-test-helpers/pull/2) (@hastebrot)
+
 ## [v0.1.0](https://github.com/oolymer/oo-test-helpers/tree/v0.1.0) (2018-04-09)
 - \(chore\) Readme: Complete basic FAQ. [\#1](https://github.com/oolymer/oo-test-helpers/pull/1) (@hastebrot)
 
